@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardapioWEB_Demo", "CardapioWEB_Demo\CardapioWEB_Demo.csproj", "{EA841FBD-7EC8-4C76-B4BD-4C8B4DF9171C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA841FBD-7EC8-4C76-B4BD-4C8B4DF9171C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA841FBD-7EC8-4C76-B4BD-4C8B4DF9171C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA841FBD-7EC8-4C76-B4BD-4C8B4DF9171C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA841FBD-7EC8-4C76-B4BD-4C8B4DF9171C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {690C6DD4-3D3B-4661-8C88-F48887DF7D00}
+	EndGlobalSection
+EndGlobal
