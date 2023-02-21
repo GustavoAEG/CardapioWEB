@@ -1,16 +1,21 @@
-﻿namespace CardapioWEB_Demo;
+﻿using CardapioWEB_Demo.Context;
+using Microsoft.EntityFrameworkCore;
+
+namespace CardapioWEB_Demo;
 public class Startup
 {
     public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
     }
-
     public IConfiguration Configuration { get; }
 
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
         services.AddControllersWithViews();
     }
 

@@ -11,7 +11,6 @@ namespace CardapioWEB_Demo.Context
         {
 
         }
-        
         public DbSet<Categoria> Categorias { get; set; }//Sera Criado no Banco de Dados Apos Migration
         public DbSet<Lanche> lanches { get; set; }
     }
