@@ -1,7 +1,8 @@
 ﻿using CardapioWEB_Demo.Context;
 using CardapioWEB_Demo.Models;
+using CardapioWEB_Demo.Repositories.Interfaces;
 
-namespace CardapioWEB_Demo.Repositories.Interfaces
+namespace CardapioWEB_Demo.Repositories
 {//AQUI IREI Implementar à Interface herdandno ICategoriaRepository
     public class CategoriaRepository : ICategoriaRepository
     {

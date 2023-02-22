@@ -1,4 +1,6 @@
-﻿namespace CardapioWEB_Demo.Repositories.Interfaces
+﻿using CardapioWEB_Demo.Models;
+
+namespace CardapioWEB_Demo.Repositories.Interfaces
 {
     public interface ICategoriaRepository
     {

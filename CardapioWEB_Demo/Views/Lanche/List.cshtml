@@ -1,0 +1,21 @@
+﻿@model IEnumerable<CardapioWEB_Demo.Models.Lanche>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Todos os lanches</h1>
+
+@foreach(var lanche in Model)
+{
+    <div>
+
+        <h4>@lanche.Nome</h4>
+        <p><img src="@lanche.ImageUrl" /></p>
+        <h3>Preço: @lanche.Preco.ToString("C")</h3>
+
+</div>
+}
+
+    </tbody>
+</table>
