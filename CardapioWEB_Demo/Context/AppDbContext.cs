@@ -7,7 +7,7 @@ namespace CardapioWEB_Demo.Context
     {
         //contrutor
 
-        public AppDbContext(DbContextOptions<AppDbContext>options): base(options)// esta base pe passada pra classe dbcontext
+        public AppDbContext(DbContextOptions<AppDbContext>options): base(options)// esta base e passada pra classe dbcontext
         {
 
         }
