@@ -14,7 +14,14 @@ namespace CardapioWEB_Demo.Controllers
 
         public IActionResult List()
         {
+
             var lanches = _lancheRepository.Lanches;
+            var totalLanches = lanches.Count();
+
+
+            ViewBag.Total = "Total de lanches: ";
+            ViewBag.TotalLanches= totalLanches;
+
             return View(lanches);
         }
     }

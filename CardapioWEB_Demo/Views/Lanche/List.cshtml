@@ -6,16 +6,26 @@
 
 <h1>Todos os lanches</h1>
 
+<hr />
+<h2>@ViewBag.Total @ViewBag.TotalLanches</h2>
+<hr />
+
+
+<div class="Container">
+    <div class="row">
 @foreach(var lanche in Model)
 {
-    <div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
 
-        <h4>@lanche.Nome</h4>
-        <p><img src="@lanche.ImageUrl" /></p>
+       
+        <p><img src="@lanche.ImageUrl" class="img-fluid"/></p>
         <h3>Preço: @lanche.Preco.ToString("C")</h3>
+        <h4>@lanche.Nome</h4>
+        <p>@lanche.DescricaoCurta</p>
 
 </div>
 }
-
+    </div>
+</div>
     </tbody>
 </table>
