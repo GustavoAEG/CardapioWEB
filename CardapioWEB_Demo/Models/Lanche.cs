@@ -41,6 +41,6 @@ namespace CardapioWEB_Demo.Models
         //Definir relacionamento entre lanche e categoria
         public int CategoriaId { get; set; }
         public virtual Categoria Categoria { get; set; }
-
+        public int Quantidade { get; internal set; }
     }
 }
