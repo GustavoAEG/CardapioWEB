@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CardapioWEB_Demo.Models.Lanche>
+﻿@model LancheListViewModel
 
 @{
     ViewData["Title"] = "List";
@@ -10,10 +10,9 @@
 <h2>@ViewBag.Total @ViewBag.TotalLanches</h2>
 <hr />
 
-
 <div class="Container">
     <div class="row">
-@foreach(var lanche in Model)
+@foreach(var lanche in Model.Lanches)
 {
     <div class="col-sm-4 col-md-4 col-lg-4">
 
