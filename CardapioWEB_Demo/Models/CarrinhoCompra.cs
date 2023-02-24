@@ -94,6 +94,15 @@ namespace CardapioWEB_Demo.Models
                 .Where(carrinho => carrinho.CarrinhoCompraId == CarrinhoCompraId);
 
             _context.CarrinhoCompraItems.RemoveRange(carrinhoItens);
+            _context.SaveChanges();
+        }
+        public decimal GetCarrinhoCompraTotal()
+        {
+            var total = _context.CarrinhoCompraItems
+                .Where(c => c.CarrinhoCompraId == CarrinhoCompraId)
+                .Select(c => c.Lanche.Preco * c.Quantidade).Sum();
+
+                return total;
         }
     }
 }
