@@ -13,7 +13,7 @@ namespace CardapioWEB_Demo.Models
             _context = context;
         }
 
-        public string CarrinhoCompraId { get; set; }
+        public string CarrinhoCompraId { get; set; }//se tem id identifica como PK
         public List<CarrinhoCompraItem> CarrinhoCompraItems { get; set; }
 
         //instancia de services providers
