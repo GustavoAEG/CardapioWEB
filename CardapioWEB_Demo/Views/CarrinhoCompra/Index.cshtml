@@ -2,7 +2,6 @@
 
 <div class="Container">
     <div class="row">
-    <img src="~/Images/Full-Cart-icon.png" />
     <div>
          <h4>Seu carrinho de compras :</h4>
 </div>
@@ -14,7 +13,6 @@
         <th>Quantidade</th>
         <th>Lanche</th>
         <th class="text-right">Preco</th>
-        <th class="text-right">Subtotal</th>
     </tr>
 </thead>
 
@@ -23,18 +21,18 @@
             {
                 <tr>
                     <td class="text-center">@item.Quantidade</td>
-                    <td class="text-left">@item.Lanche.Nome</td
+                    <td class="text-left">@item.Lanche.Nome</td>
                     <td class="text-right">@item.Lanche.Preco.ToString("c")</td>
 
                     <td class="text-center">
                         <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra"
-                        asp-route-lancheId="@item.Lanche.lancheID"><img src="~/Images/Full-Cart-icon.png" /></a>
+                        asp-route-lancheId="@item.Lanche.lancheID"><img src="~/Images/lixeira-de-reciclagem.png" /></a>
                     </td>
                 </tr>
             }
         </tbody>
         <tfoot>
-            s
+    
             <tr>
                 <td colspan="3" class="text-right">Total:</td>
                 <td class="text-right">
