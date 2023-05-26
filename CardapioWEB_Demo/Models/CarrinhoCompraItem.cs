@@ -10,6 +10,10 @@ namespace CardapioWEB_Demo.Models
         public Lanche Lanche { get; set; }//O EF vai identificar que será uma chave estrangeira
         public int Quantidade { get; set; }
         [StringLength(200)]
-        public string CarrinhoCompraId { get; set; }
+        public string CarrinhoCompraId { get; set; }//Id do Carrinho Compra
+
+        //CarrinhoCompraItem
+        //CarrinhoCompra
+        //Lanche
     }
 }
