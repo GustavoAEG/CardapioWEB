@@ -1,11 +1,10 @@
-﻿using CardapioWEB_Demo.Migrations;
-using CardapioWEB_Demo.Models;
-using CardapioWEB_Demo.ViewModels;
+﻿using LanchesMac.Models;
+using LanchesMac.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CardapioWEB_Demo.Components
+namespace LanchesMac.Components
 {
-    public class CarrinhoCompraResumo:ViewComponent
+    public class CarrinhoCompraResumo : ViewComponent
     {
         private readonly CarrinhoCompra _carrinhoCompra;
 
@@ -16,22 +15,16 @@ namespace CardapioWEB_Demo.Components
 
         public IViewComponentResult Invoke()
         {
-            var items = new List<Models.CarrinhoCompraItem>()
-                                {
-                                new Models.CarrinhoCompraItem(),
-                                new Models.CarrinhoCompraItem()
-
-                                };
-
-            //var itens = _carrinhoCompra.GetCarrinhoCompraItems();
-            _carrinhoCompra.CarrinhoCompraItems = items;
+            var items = _carrinhoCompra.GetCarrinhoCompraItens();
+            //para testar 
+            //var items = new List<CarrinhoCompraItem>() { new CarrinhoCompraItem(), new CarrinhoCompraItem() };
+            _carrinhoCompra.CarrinhoCompraItens = items;
 
             var carrinhoCompraVM = new CarrinhoCompraViewModel
             {
                 CarrinhoCompra = _carrinhoCompra,
                 CarrinhoCompraTotal = _carrinhoCompra.GetCarrinhoCompraTotal()
             };
-
             return View(carrinhoCompraVM);
         }
     }

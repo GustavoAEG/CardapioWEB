@@ -1,18 +1,18 @@
-﻿using CardapioWEB_Demo.Models;
+﻿using LanchesMac.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace CardapioWEB_Demo.Context
+namespace LanchesMac.Context
 {
-    public class AppDbContext:DbContext  //herda da classe dbcontext entityfraework
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
-        //contrutor
-
-        public AppDbContext(DbContextOptions<AppDbContext>options): base(options)// esta base e passada pra classe dbcontext
-        {
-
-        }
-        public DbSet<Categoria> Categorias { get; set; }//Sera Criado no Banco de Dados Apos Migration
-        public DbSet<Lanche> lanches { get; set; }
-        public DbSet<CarrinhoCompraItem> CarrinhoCompraItems { get; set; }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        { }
+        public DbSet<Lanche> Lanches { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<PedidoDetalhe> PedidoDetalhes { get; set; }
     }
 }

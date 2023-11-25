@@ -1,28 +1,27 @@
-﻿using CardapioWEB_Demo.Context;
-using CardapioWEB_Demo.Models;
-using CardapioWEB_Demo.Repositories.Interfaces;
+﻿using LanchesMac.Context;
+using LanchesMac.Models;
+using LanchesMac.Repositories.Interfaces;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
-namespace CardapioWEB_Demo.Repositories
+namespace LanchesMac.Repositories
 {
     public class LancheRepository : ILancheRepository
     {
-        private readonly AppDbContext _contexto;
+        private readonly AppDbContext _context;
 
         public LancheRepository(AppDbContext contexto)
         {
-            _contexto = contexto;
+            _context = contexto;
         }
 
-        public IEnumerable<Lanche> Lanches => _contexto.lanches.Include(c => c.Categoria);
+        public IEnumerable<Lanche> Lanches => _context.Lanches.Include(c => c.Categoria);
 
-        public IEnumerable<Lanche> LanchesPreferidos => _contexto.lanches.
-            Where(l => l.IsLanchePreferido).
-            Include(c => c.Categoria);
+        public IEnumerable<Lanche> LanchesPreferidos => _context.Lanches.Where(p => p.IsLanchePreferido).Include(c => c.Categoria);
 
-        public Lanche GetLancheByID(int lancheId)
-        {
-            return _contexto.lanches.FirstOrDefault(l => l.lancheID == lancheId); //lanchdeID(MODEL) == lancheID(Parametro)
-        }
+        public Lanche GetLancheById(int lancheId) => _context.Lanches.FirstOrDefault(l => l.LancheId == lancheId);
     }
 }

@@ -1,19 +1,18 @@
-﻿using CardapioWEB_Demo.Context;
-using CardapioWEB_Demo.Models;
-using CardapioWEB_Demo.Repositories.Interfaces;
+﻿using LanchesMac.Context;
+using LanchesMac.Models;
+using LanchesMac.Repositories.Interfaces;
+using System.Collections.Generic;
 
-namespace CardapioWEB_Demo.Repositories
-{//AQUI IREI Implementar à Interface herdandno ICategoriaRepository
+namespace LanchesMac.Repositories
+{
     public class CategoriaRepository : ICategoriaRepository
     {
-        //épreciso acessarbanco de dados
         private readonly AppDbContext _context;
 
-        public CategoriaRepository(AppDbContext context)
+        public CategoriaRepository(AppDbContext contexto)
         {
-            _context = context;
+            _context = contexto;
         }
-
         public IEnumerable<Categoria> Categorias => _context.Categorias;
     }
 }

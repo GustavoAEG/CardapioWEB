@@ -1,6 +1,7 @@
-﻿using CardapioWEB_Demo.Models;
+﻿using LanchesMac.Models;
+using System.Collections.Generic;
 
-namespace CardapioWEB_Demo.ViewModels
+namespace LanchesMac.ViewModels
 {
     public class HomeViewModel
     {

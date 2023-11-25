@@ -1,8 +1,10 @@
-namespace CardapioWEB_Demo.Models
+using System;
+
+namespace LanchesMac.Models
 {
     public class ErrorViewModel
     {
-        public string? RequestId { get; set; }
+        public string RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }

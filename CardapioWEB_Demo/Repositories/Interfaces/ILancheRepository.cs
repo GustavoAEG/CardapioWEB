@@ -1,13 +1,12 @@
-﻿using CardapioWEB_Demo.Models;
+﻿using LanchesMac.Models;
+using System.Collections.Generic;
 
-namespace CardapioWEB_Demo.Repositories.Interfaces
+namespace LanchesMac.Repositories.Interfaces
 {
     public interface ILancheRepository
     {
         IEnumerable<Lanche> Lanches { get; }
         IEnumerable<Lanche> LanchesPreferidos { get; }
-
-        Lanche GetLancheByID(int lancheId);
-
+        Lanche GetLancheById(int lancheId);
     }
 }

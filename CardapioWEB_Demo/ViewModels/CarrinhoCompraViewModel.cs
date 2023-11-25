@@ -1,6 +1,6 @@
-﻿using CardapioWEB_Demo.Models;
+﻿using LanchesMac.Models;
 
-namespace CardapioWEB_Demo.ViewModels
+namespace LanchesMac.ViewModels
 {
     public class CarrinhoCompraViewModel
     {

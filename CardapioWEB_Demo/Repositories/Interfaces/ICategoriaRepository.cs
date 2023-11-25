@@ -1,6 +1,7 @@
-﻿using CardapioWEB_Demo.Models;
+﻿using LanchesMac.Models;
+using System.Collections.Generic;
 
-namespace CardapioWEB_Demo.Repositories.Interfaces
+namespace LanchesMac.Repositories.Interfaces
 {
     public interface ICategoriaRepository
     {
