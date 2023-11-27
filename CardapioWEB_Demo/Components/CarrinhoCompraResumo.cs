@@ -16,15 +16,15 @@ namespace CardapioWEB_Demo.Components
 
         public IViewComponentResult Invoke()
         {
-            var items = new List<Models.CarrinhoCompraItem>()
-                                {
-                                new Models.CarrinhoCompraItem(),
-                                new Models.CarrinhoCompraItem()
+            var itens = _carrinhoCompra.GetCarrinhoCompraItens();
 
-                                };
+            //var itens = new List<CarrinhoCompraItem>()
+            //{
+            //    new CarrinhoCompraItem(),
+            //    new CarrinhoCompraItem()
+            //};
 
-            //var itens = _carrinhoCompra.GetCarrinhoCompraItems();
-            _carrinhoCompra.CarrinhoCompraItems = items;
+            _carrinhoCompra.CarrinhoCompraItems = itens;
 
             var carrinhoCompraVM = new CarrinhoCompraViewModel
             {

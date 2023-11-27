@@ -25,18 +25,24 @@ namespace CardapioWEB_Demo.Controllers
             }
             else
             {
-                if (string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
-                {
-                    lanches = _lancheRepository.Lanches
-                        .Where(l => l.Categoria.Nome.Equals("NORMAL"))
-                        .OrderBy(l => l.Nome);
-                }
-                else
-                {
-                    lanches = _lancheRepository.Lanches
-                       .Where(l => l.Categoria.Nome.Equals("NATURAL"))
-                       .OrderBy(l => l.Nome);
-                }
+                //if (string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
+                //{
+                //    lanches = _lancheRepository.Lanches
+                //        .Where(l => l.Categoria.CategoriaNome.Equals("Normal"))
+                //        .OrderBy(l => l.Nome);
+                //}
+                //else
+                //{
+                //    lanches = _lancheRepository.Lanches
+                //       .Where(l => l.Categoria.CategoriaNome.Equals("Natural"))
+                //       .OrderBy(l => l.Nome);
+                //}
+
+
+                lanches = _lancheRepository.Lanches
+                          .Where(l => l.Categoria.Nome.Equals(categoria))
+                          .OrderBy(c => c.Nome);
+            
                 categoriaAtual = categoria;
             }
 
@@ -47,6 +53,11 @@ namespace CardapioWEB_Demo.Controllers
             };
 
             return View(lanchesListViewModel);
+        }
+        public IActionResult Details(int lancheId)
+        {
+            var lanche = _lancheRepository.Lanches.FirstOrDefault(l => l.lancheID == lancheId);
+            return View(lanche);
         }
     }
 }
