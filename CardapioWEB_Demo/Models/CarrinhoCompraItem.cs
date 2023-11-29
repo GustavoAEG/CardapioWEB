@@ -6,14 +6,11 @@ namespace CardapioWEB_Demo.Models
     [Table("CarrinhoCompraItens")]
     public class CarrinhoCompraItem
     {
-        public int CarrinhoCompraItemId { get; set; }//o  ED identifica Id como PK
-        public Lanche Lanche { get; set; }//O EF vai identificar que será uma chave estrangeira
+        public int CarrinhoCompraItemId { get; set; }
         public int Quantidade { get; set; }
-        [StringLength(200)]
-        public string CarrinhoCompraId { get; set; }//Id do Carrinho Compra
 
-        //CarrinhoCompraItem
-        //CarrinhoCompra
-        //Lanche
+        [StringLength(200)]
+        public string CarrinhoCompraId { get; set; }
+        public Lanche Lanche { get; set; }
     }
 }
