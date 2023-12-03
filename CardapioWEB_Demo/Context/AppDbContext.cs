@@ -1,9 +1,11 @@
 ﻿using CardapioWEB_Demo.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CardapioWEB_Demo.Context
 {
-    public class AppDbContext:DbContext  //herda da classe dbcontext entityfraework
+    public class AppDbContext:IdentityDbContext<IdentityUser>  //herda da classe dbcontext entityfraework
     {
         //contrutor
 
