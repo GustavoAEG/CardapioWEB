@@ -73,13 +73,12 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllerRoute(
-             name: "categoriaFiltro",
-             pattern: "Lanche/{action}/{categoria?}",
-             defaults: new { Controller = "Lanche", action = "List" });
+          name: "areas",
+          pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
             endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                  name: "default",
+                  pattern: "{controller=Home}/{action=Index}/{id?}");
         });
     }
 }
