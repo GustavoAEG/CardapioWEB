@@ -16,7 +16,7 @@ namespace CardapioWEB_Demo.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
+        [AllowAnonymous]
         public IActionResult Login(string returnUrl)
         {
             return View(new LoginViewModel()
@@ -24,6 +24,7 @@ namespace CardapioWEB_Demo.Controllers
                 ReturnUrl = returnUrl,
             });
         }
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginVM)
         {

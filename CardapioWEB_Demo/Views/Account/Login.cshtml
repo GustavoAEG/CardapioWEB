@@ -21,10 +21,11 @@
                         <div class="form-group">
                             <label asp-for="Password" class="col-md-2 control-label"></label>
                             <div class="col-md-6">
-                                <input asp-for="Password" class="form-control" />
+                                <input asp-for="Password" class="form-control" type="password" />
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                         </div>
+                            <br />
                         <div class="form-group">
                             <div class="col-md-8">
                                 <input type="submit" class="btn btn-success" value="Log in" />

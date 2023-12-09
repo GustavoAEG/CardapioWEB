@@ -1,5 +1,6 @@
 ﻿using CardapioWEB_Demo.Models;
 using CardapioWEB_Demo.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CardapioWEB_Demo.Controllers
@@ -16,12 +17,13 @@ namespace CardapioWEB_Demo.Controllers
             _carrinhoCompra = carrinhoCompra;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Checkout()
         {
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public IActionResult Checkout(Pedido pedido)
         {
