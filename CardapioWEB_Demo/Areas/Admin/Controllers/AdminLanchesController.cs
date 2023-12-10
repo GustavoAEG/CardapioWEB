@@ -12,88 +12,91 @@ using Microsoft.AspNetCore.Authorization;
 namespace CardapioWEB_Demo.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles ="Admin")]
-    public class AdminCategoriasController : Controller
+    [Authorize(Roles = "Admin")]
+    public class AdminLanchesController : Controller
     {
         private readonly AppDbContext _context;
 
-        public AdminCategoriasController(AppDbContext context)
+        public AdminLanchesController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: Admin/AdminCategorias
+        // GET: Admin/AdminLanches
         public async Task<IActionResult> Index()
         {
-              return _context.Categorias != null ? 
-                          View(await _context.Categorias.ToListAsync()) :
-                          Problem("Entity set 'AppDbContext.Categorias'  is null.");
+            var appDbContext = _context.lanches.Include(l => l.Categoria);
+            return View(await appDbContext.ToListAsync());
         }
 
-        // GET: Admin/AdminCategorias/Details/5
+        // GET: Admin/AdminLanches/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Categorias == null)
+            if (id == null || _context.lanches == null)
             {
                 return NotFound();
             }
 
-            var categoria = await _context.Categorias
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (categoria == null)
+            var lanche = await _context.lanches
+                .Include(l => l.Categoria)
+                .FirstOrDefaultAsync(m => m.lancheID == id);
+            if (lanche == null)
             {
                 return NotFound();
             }
 
-            return View(categoria);
+            return View(lanche);
         }
 
-        // GET: Admin/AdminCategorias/Create
+        // GET: Admin/AdminLanches/Create
         public IActionResult Create()
         {
+            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descricao");
             return View();
         }
 
-        // POST: Admin/AdminCategorias/Create
+        // POST: Admin/AdminLanches/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao")] Categoria categoria)
+        public async Task<IActionResult> Create([Bind("lancheID,Nome,DescricaoCurta,DescricaoDetalhada,Preco,ImageUrl,ImagemThumbnailUrl,IsLanchePreferido,EmEstoque,CategoriaId")] Lanche lanche)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(categoria);
+                _context.Add(lanche);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(categoria);
+            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descricao", lanche.CategoriaId);
+            return View(lanche);
         }
 
-        // GET: Admin/AdminCategorias/Edit/5
+        // GET: Admin/AdminLanches/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Categorias == null)
+            if (id == null || _context.lanches == null)
             {
                 return NotFound();
             }
 
-            var categoria = await _context.Categorias.FindAsync(id);
-            if (categoria == null)
+            var lanche = await _context.lanches.FindAsync(id);
+            if (lanche == null)
             {
                 return NotFound();
             }
-            return View(categoria);
+            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descricao", lanche.CategoriaId);
+            return View(lanche);
         }
 
-        // POST: Admin/AdminCategorias/Edit/5
+        // POST: Admin/AdminLanches/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Descricao")] Categoria categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("lancheID,Nome,DescricaoCurta,DescricaoDetalhada,Preco,ImageUrl,ImagemThumbnailUrl,IsLanchePreferido,EmEstoque,CategoriaId")] Lanche lanche)
         {
-            if (id != categoria.Id)
+            if (id != lanche.lancheID)
             {
                 return NotFound();
             }
@@ -102,12 +105,12 @@ namespace CardapioWEB_Demo.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(categoria);
+                    _context.Update(lanche);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoriaExists(categoria.Id))
+                    if (!LancheExists(lanche.lancheID))
                     {
                         return NotFound();
                     }
@@ -118,49 +121,51 @@ namespace CardapioWEB_Demo.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(categoria);
+            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descricao", lanche.CategoriaId);
+            return View(lanche);
         }
 
-        // GET: Admin/AdminCategorias/Delete/5
+        // GET: Admin/AdminLanches/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Categorias == null)
+            if (id == null || _context.lanches == null)
             {
                 return NotFound();
             }
 
-            var categoria = await _context.Categorias
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (categoria == null)
+            var lanche = await _context.lanches
+                .Include(l => l.Categoria)
+                .FirstOrDefaultAsync(m => m.lancheID == id);
+            if (lanche == null)
             {
                 return NotFound();
             }
 
-            return View(categoria);
+            return View(lanche);
         }
 
-        // POST: Admin/AdminCategorias/Delete/5
+        // POST: Admin/AdminLanches/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Categorias == null)
+            if (_context.lanches == null)
             {
-                return Problem("Entity set 'AppDbContext.Categorias'  is null.");
+                return Problem("Entity set 'AppDbContext.lanches'  is null.");
             }
-            var categoria = await _context.Categorias.FindAsync(id);
-            if (categoria != null)
+            var lanche = await _context.lanches.FindAsync(id);
+            if (lanche != null)
             {
-                _context.Categorias.Remove(categoria);
+                _context.lanches.Remove(lanche);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoriaExists(int id)
+        private bool LancheExists(int id)
         {
-          return (_context.Categorias?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.lanches?.Any(e => e.lancheID == id)).GetValueOrDefault();
         }
     }
 }
