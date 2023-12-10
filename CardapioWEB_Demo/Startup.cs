@@ -2,6 +2,7 @@
 using CardapioWEB_Demo.Models;
 using CardapioWEB_Demo.Repositories;
 using CardapioWEB_Demo.Repositories.Interfaces;
+using CardapioWEB_Demo.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,6 +41,19 @@ public class Startup
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();//consegue pegar as requisicoes
         services.AddTransient<IpedidoRepository, PedidoRepository>();
+        services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+
+
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("Admin",
+                politica =>
+                {
+                    politica.RequireRole("Admin");
+                });
+        });
+
+
         services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
         services.AddControllersWithViews();
@@ -49,7 +63,7 @@ public class Startup
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial)
     {
         if (env.IsDevelopment())
         {
@@ -66,6 +80,10 @@ public class Startup
 
         app.UseRouting();
         app.UseSession();
+
+        seedUserRoleInitial.SeedRoles();
+        seedUserRoleInitial.SeedUsers();
+
 
         app.UseAuthentication();
         app.UseAuthorization();
