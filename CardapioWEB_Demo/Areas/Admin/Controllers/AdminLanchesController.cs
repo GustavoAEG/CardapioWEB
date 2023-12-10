@@ -101,9 +101,8 @@ namespace CardapioWEB_Demo.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
+       
+                    try
                 {
                     _context.Update(lanche);
                     await _context.SaveChangesAsync();
@@ -120,7 +119,7 @@ namespace CardapioWEB_Demo.Areas.Admin.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            
             ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descricao", lanche.CategoriaId);
             return View(lanche);
         }
