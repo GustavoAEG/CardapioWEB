@@ -1,4 +1,5 @@
-﻿using CardapioWEB_Demo.Context;
+﻿using CardapioWEB_Demo.Areas.Admin.Services;
+using CardapioWEB_Demo.Context;
 using CardapioWEB_Demo.Models;
 using CardapioWEB_Demo.Repositories;
 using CardapioWEB_Demo.Repositories.Interfaces;
@@ -43,6 +44,7 @@ public class Startup
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();//consegue pegar as requisicoes
         services.AddTransient<IpedidoRepository, PedidoRepository>();
         services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+        services.AddScoped<RelatorioVendasService>();
 
 
         services.AddAuthorization(options =>
