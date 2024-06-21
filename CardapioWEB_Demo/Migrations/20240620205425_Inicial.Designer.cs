@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CardapioWEB_Demo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240619211635_postgreedatabse_")]
-    partial class postgreedatabse_
+    [Migration("20240620205425_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
