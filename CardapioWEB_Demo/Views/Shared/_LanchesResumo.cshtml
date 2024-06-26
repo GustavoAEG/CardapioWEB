@@ -9,21 +9,14 @@
 </style>
 
 <div class="col-sm-4 col-md-4 col-lg-4">
-    <p><img src="@Model.ImageUrl" class="img-fluid" style="height: 350px;"></p>
+    <a asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-LancheId="@Model.lancheID">
+        <img src="@Model.ImageUrl" class="img-fluid" style="height: 230px;">
+    </a>
     <h3>Preço : @Model.Preco.ToString("c")</h3>
 
     <h4>
-        <a asp-controller="Lanche" asp-action="Details"
-           asp-route-lancheId="@Model.lancheID">@Model.Nome</a>
+        <a asp-controller="Lanche" asp-action="Details" asp-route-lancheId="@Model.lancheID">@Model.Nome</a>
     </h4>
 
     <p>@Model.DescricaoCurta</p>
-    <div>
-        <p class="button">
-            <a class="btn btn-primary" id="cartButton" asp-controller="CarrinhoCompra"
-               asp-action="AdicionarItemNoCarrinhoCompra" asp-route-LancheId="@Model.lancheID">
-                Incluir no Carrinho
-            </a>
-        </p>
-    </div>
 </div>
