@@ -1,12 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
 
-  <ItemGroup>
+		<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+		<SelfContained>true</SelfContained>
+		<PublishTrimmed>false</PublishTrimmed>
+	</PropertyGroup>
+
+	<ItemGroup>
     <Compile Remove="wwwroot\NovaPasta1\**" />
     <Compile Remove="wwwroot\NovaPasta\**" />
     <Content Remove="wwwroot\NovaPasta1\**" />
