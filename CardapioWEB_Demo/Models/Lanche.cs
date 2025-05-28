@@ -9,13 +9,12 @@ namespace CardapioWEB_Demo.Models
         [Key]
         public int lancheID { get; set; }
         [Required(ErrorMessage = "O nome do lanche deve ser informado")]
-        [StringLength(80, MinimumLength = 10, ErrorMessage = "O {0} deve ter no mínimo {1} caracteres")]
+   
         [Display(Name = "Nome do lanche")]
         public string Nome { get; set; }
         [Required(ErrorMessage = "A descrição do lanche deve ser informado")]
         [Display(Name = "Descrição do lanche")]
-        [MinLength(20, ErrorMessage = " Descrição deve tetr no minimo {1} caracteres")]
-        [MaxLength(200, ErrorMessage = "Descrição deve ter no máximo {1} caracteres")]
+        [MinLength(5, ErrorMessage = " Descrição deve tetr no minimo {1} caracteres")]
         public string DescricaoCurta { get; set; }
         [Required(ErrorMessage = "A descrição do lanche deve ser informado")]
         [Display(Name = "Descrição do lanche")]
